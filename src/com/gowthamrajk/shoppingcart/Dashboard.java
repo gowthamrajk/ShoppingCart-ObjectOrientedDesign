@@ -1,8 +1,6 @@
 package com.gowthamrajk.shoppingcart;
 
 import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
 
 public class Dashboard {
 	
@@ -12,7 +10,6 @@ public class Dashboard {
 		  
 		ShoppingCart cart = new ShoppingCart();
 		cart.setCartId(101);
-		List<Item> cartItems = new ArrayList<>();
 		System.out.println("Welcome to Gowthamraj K's Shopping Cart :)");
 		
 		while(true) {
@@ -47,13 +44,12 @@ public class Dashboard {
 						        Double.parseDouble(newItem[3]), seller, customer);
 				    
 				    cart.addToCart(item);
-				    cartItems.add(item);
 				    System.out.println("\nYour Item is added to the cart successfully !!!\n");
 			        break;
 		        }
 		        case 2:
 		        {
-		        	if(cartItems.isEmpty()) {
+		        	if(cart.getItems().isEmpty()) {
 		        		System.out.println("\nYour Cart is Empty !!!\n");
 		        	}
 		        	else {
@@ -64,13 +60,13 @@ public class Dashboard {
 			    				                shippingAddress[2], shippingAddress[3], shippingAddress[4]));
 			    		
 			    		double totalCartAmount = 0;
-			    		for(Item itemsObj : cartItems) {
+			    		for(Item itemsObj : cart.getItems()) {
 			    			totalCartAmount += itemsObj.getItemPrice();
 			    		}
 			    		cart.setPayableAmount(totalCartAmount);
 			    		
 			    		System.out.println(cart);
-			    		cart.printCartItems(cartItems);
+			    		cart.printCartItems();
 		        	}
 			        break;
 		        }
