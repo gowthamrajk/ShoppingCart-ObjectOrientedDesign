@@ -1,17 +1,18 @@
 package com.gowthamrajk.shoppingcart;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class ShoppingCart {
 	
 	private int cartId;
-	private Item items;
+	private List<Item> items = new ArrayList<>();
 	private double payableAmount;
 	private ShippingAddress shippingAddress;
 	
 	public ShoppingCart() { }
 	
-	public ShoppingCart(int cartId, Item items, double payableAmount, ShippingAddress shippingAddress) {
+	public ShoppingCart(int cartId, List<Item> items, double payableAmount, ShippingAddress shippingAddress) {
 		this.cartId = cartId;
 		this.items = items;
 		this.payableAmount = payableAmount;
@@ -26,10 +27,10 @@ public class ShoppingCart {
 		this.cartId = cartId;
 	}
 	
-	public Item getItems() {
+	public List<Item> getItems() {
 		return items;
 	}
-	public void setItems(Item items) {
+	public void setItems(List<Item> items) {
 		this.items = items;
 	}
 	
@@ -51,7 +52,7 @@ public class ShoppingCart {
 	
 	public void addToCart(Item item)
 	{
-		this.items = item;
+		this.items.add(item);
 	}
 	
     public double getCartAmount() {
@@ -59,9 +60,9 @@ public class ShoppingCart {
 		return this.payableAmount;
 	}
     
-    public void printCartItems(List<Item> cartItems) {
+    public void printCartItems() {
     	int counter = 1; 
-    	for(Item itemObj : cartItems) {
+    	for(Item itemObj : this.items) {
     		System.out.println("\nProduct " + counter + " Information : \n");
 			System.out.println(itemObj);
 			counter++;
